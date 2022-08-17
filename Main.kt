@@ -2,7 +2,21 @@
  * You can edit, run, and share this code.
  * play.kotlinlang.org
  */
+
+enum class State {
+    IDLE, RUNNING, FINISHED                           
+}
+
 fun main() {
+    val state = State.RUNNING                         
+    val message = when (state) {                      
+        State.IDLE -> "It's idle"
+        State.RUNNING -> "It's running"
+        State.FINISHED -> "It's finished"
+    }
+    println(message)
+    
+    
     val txt = "c"
     val option = when(txt) {
         "a" -> {1}
