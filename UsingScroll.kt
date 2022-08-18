@@ -1,6 +1,6 @@
-package com.ankauniss.myapplication
-
 //Scroll un dikeyde ve yatayda nasıl çalıştığını anlamaya çalışırken kafa karışıklığı olmuş olabilir fakat en iyisi metodları deneyerek öğrenmek
+
+package com.ankauniss.myapplication
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -20,6 +20,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ankauniss.myapplication.ui.theme.MyApplicationTheme
@@ -56,6 +57,21 @@ fun Sayfa() {
        // val nameTV = remember { mutableStateOf("---")}
         val viewModel: SayfaViewModel = viewModel()
         val nameTV = viewModel.sonuc.observeAsState("")
+
+        Row(//horizontalArrangement = Arrangement.Center,
+            modifier = Modifier.fillMaxWidth()
+                .padding(20.dp)
+                .scrollable(state = scrollState, orientation = Orientation.Horizontal)
+                .horizontalScroll(state = ScrollState(1))
+            //   .horizontalScroll(state = scrollState)
+        ) {
+            for (i in 1..15) {
+                Button(onClick = { /*TODO*/ }, modifier = Modifier.padding(3.dp)) {
+                    Text(text = "kutu")
+                }
+            }
+        }
+       // Spacer(modifier = Modifier.padding(10.dp))
         Text(text = nameTV.value, fontSize = 20.sp)
         TextField(
             value = name.value,
@@ -69,22 +85,22 @@ fun Sayfa() {
         ) {
             Text(text = "Text'te Göster")
         }
+        Row(//horizontalArrangement = Arrangement.Center,
+            modifier = Modifier.fillMaxWidth()
+                .padding(20.dp)
+                .scrollable(state = scrollState, orientation = Orientation.Horizontal)
+                .horizontalScroll(state = ScrollState(1))
+            //   .horizontalScroll(state = scrollState)
+        ) {
+            for (i in 1..15) {
+                Button(onClick = { /*TODO*/ }, modifier = Modifier.padding(3.dp)) {
+                    Text(text = "kutu")
+                }
+            }
+        }
         for (i in 1..15) {
             Button(onClick = { /*TODO*/ }) {
                 Text(text = "kutu")
-            }
-        }
-
-        Row(//horizontalArrangement = Arrangement.Center,
-            modifier = Modifier.fillMaxWidth()
-                .scrollable(state = scrollState, orientation = Orientation.Horizontal)
-                .horizontalScroll(state = ScrollState(1))
-             //   .horizontalScroll(state = scrollState)
-        ) {
-            for (i in 1..15) {
-                Button(onClick = { /*TODO*/ }) {
-                    Text(text = "kutu")
-                }
             }
         }
     }
